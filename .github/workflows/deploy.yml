@@ -8,7 +8,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy via SSH (git pull on server)
+      - name: Deploy via SSH (build on server)
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -19,3 +19,5 @@ jobs:
             cd /home/starzn/front-practice-samples
             git fetch origin main
             git reset --hard origin/main
+            pnpm install
+            pnpm build
