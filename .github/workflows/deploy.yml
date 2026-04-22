@@ -14,7 +14,9 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
+          script_stop: true
           script: |
+            source ~/.bashrc 2>/dev/null || source ~/.zshrc 2>/dev/null || true
             set -e
             cd /home/starzn/front-practice-samples
             git fetch origin main
