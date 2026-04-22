@@ -29,6 +29,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Astro
+.astro/
+
 # 构建输出
 dist/
 dist-ssr/
