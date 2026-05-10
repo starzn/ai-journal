@@ -18,8 +18,13 @@ jobs:
           script: |
             source ~/.bashrc 2>/dev/null || source ~/.zshrc 2>/dev/null || true
             set -e
+            echo "🚀 Deploy started at $(date)"
             cd /home/starzn/ai-journal
+            echo "📡 Git pulling..."
             git fetch origin main
             git reset --hard origin/main
+            echo "📦 Installing dependencies..."
             pnpm install
+            echo "🔨 Building..."
             pnpm build
+            echo "✅ Deploy finished at $(date)"
