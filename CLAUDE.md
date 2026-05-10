@@ -57,7 +57,13 @@ lang: zh_CN
 
 ## Deployment
 
-推送到 `main` 分支触发 GitHub Actions，SSH 到服务器执行 `git fetch && pnpm install && pnpm build`。Nginx 指向 `dist/` 目录。
+推送到 `main` 分支触发 `.github/workflows/deploy.yml`，通过 SSH 连接阿里云服务器（用户 `deploy`），在 `/home/deploy/front-practice-samples` 目录下执行 `git fetch && pnpm install && pnpm build`。构建产物输出到 `dist/`，Nginx 指向该目录提供静态文件服务。
+
+服务器环境：Node.js 24, pnpm 9.14.4
+
+## Known Issues
+
+- `src/styles/markdown.css` 中 `@apply link` 已展开为内联样式，因为 Tailwind v3.4.19 跨文件 `@apply` 自定义类会构建失败（Fuwari 模板本身的 bug）
 
 ## Conventions
 
