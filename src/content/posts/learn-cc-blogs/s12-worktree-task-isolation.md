@@ -1,13 +1,13 @@
 ---
-title: "s12 Worktree 任务隔离学习记录"
+title: "s12 Worktree 任务隔离"
 published: 2025-03-23
-description: "学习 Git 仓库根目录检测、EventBus 事件日志与 Worktree 任务隔离。"
+description: "Git 仓库根目录检测、EventBus 事件日志与 Worktree 任务隔离。"
 tags: [Worktree, Git, EventBus, 任务隔离]
 category: learn-cc-blogs
 lang: zh_CN
 ---
 
-# s12 Worktree 任务隔离学习记录
+# s12 Worktree 任务隔离
 
 ## 1. `detect_repo_root(cwd)` 函数作用
 

@@ -1,13 +1,13 @@
 ---
-title: "s01 Agent Loop 学习记录"
+title: "s01 Agent Loop"
 published: 2025-03-01
-description: "最小可运行的 AI Agent Loop 示例学习笔记，解析核心循环流程。"
+description: "最小可运行的 AI Agent Loop 示例，解析核心循环流程。"
 tags: [Agent Loop, Anthropic API, tool_use, Python]
 category: learn-cc-blogs
 lang: zh_CN
 ---
 
-# s01_agent_loop.py 学习记录
+# s01_agent_loop.py
 
 ## 文件定位
 

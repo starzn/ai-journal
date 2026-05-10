@@ -1,5 +1,5 @@
 ---
-title: "s11 Autonomous Agents 学习记录"
+title: "s11 Autonomous Agents"
 published: 2025-03-21
 description: "解析自主代理的子代理生命周期管理与任务恢复机制。"
 tags: [自主代理, 生命周期, idle轮询, 任务恢复]
@@ -7,7 +7,7 @@ category: learn-cc-blogs
 lang: zh_CN
 ---
 
-# s11 Autonomous Agents 学习记录
+# s11 Autonomous Agents
 
 ## 1. 子代理生命周期（`_loop`）
 

@@ -1,5 +1,5 @@
 ---
-title: "s02 Tool Use 学习记录"
+title: "s02 Tool Use"
 published: 2025-03-03
 description: "围绕工具使用模块的逐行理解，重点包括路径保护与文件读取。"
 tags: [Tool Use, 路径安全, 文件读取, Python]
@@ -7,9 +7,9 @@ category: learn-cc-blogs
 lang: zh_CN
 ---
 
-# s02_tool_use.py 学习记录
+# s02_tool_use.py
 
-## 本次学习内容概览
+## 本次内容概览
 
 这次主要围绕 `agents/s02_tool_use.py` 做了逐行理解与小幅可读性优化，重点包括：
 
@@ -109,7 +109,7 @@ print(f"\033[32m>命令输出：\033[0m {output[:200]}")
 ## 小结
 
 `s02_tool_use.py` 在 `s01` 的基础上引入了多工具分发与文件操作能力。
-本次学习的关键收获是：目录安全边界（`WORKDIR + safe_path`）和输出可读性（颜色高亮）同样重要，它们分别提升了系统的安全性与可调试性。
+关键收获是：目录安全边界（`WORKDIR + safe_path`）和输出可读性（颜色高亮）同样重要，它们分别提升了系统的安全性与可调试性。
 
 ## 可用例子
 1.Read the file requirements.txt

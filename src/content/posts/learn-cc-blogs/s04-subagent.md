@@ -1,5 +1,5 @@
 ---
-title: "s04 Subagent 学习记录"
+title: "s04 Subagent"
 published: 2025-03-07
 description: "梳理子智能体循环机制、作用域隔离与工具参数 schema 定义。"
 tags: [SubAgent, 循环安全上限, 工具Schema, JSON日志]
@@ -7,9 +7,9 @@ category: learn-cc-blogs
 lang: zh_CN
 ---
 
-# s04_subagent.py 学习记录
+# s04_subagent.py
 
-## 本次学习内容概览
+## 本次内容概览
 
 这次围绕 `agents/s04_subagent.py` 重点梳理了子智能体循环、作用域、工具参数 schema，以及日志输出格式化四个点，并完成了一处代码改造（将 task 日志改为 JSON 输出）。
 

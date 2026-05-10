@@ -1,13 +1,13 @@
 ---
-title: "s07 Task System 学习记录"
+title: "s07 Task System"
 published: 2025-03-13
-description: "学习任务系统中从文件名提取任务 ID、JSON 序列化等核心实现。"
+description: "解析任务系统中从文件名提取任务 ID、JSON 序列化等核心实现。"
 tags: [任务系统, JSON, 文件解析, 任务ID]
 category: learn-cc-blogs
 lang: zh_CN
 ---
 
-# s07_task_system 学习记录
+# s07_task_system
 
 ## 1) 从文件名提取任务 ID
 

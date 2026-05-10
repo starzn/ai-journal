@@ -1,5 +1,5 @@
 ---
-title: "s10 Team Protocols 学习记录"
+title: "s10 Team Protocols"
 published: 2025-03-19
 description: "解析团队协议中的 shutdown 响应流程与双重确认机制。"
 tags: [团队协议, shutdown, 状态确认, 消息总线]
@@ -7,7 +7,7 @@ category: learn-cc-blogs
 lang: zh_CN
 ---
 
-# s10 Team Protocols 学习记录
+# s10 Team Protocols
 
 ## 1. `shutdown_response` 在子代理侧做什么
 

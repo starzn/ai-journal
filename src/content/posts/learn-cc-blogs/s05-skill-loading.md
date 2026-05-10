@@ -1,5 +1,5 @@
 ---
-title: "s05 Skill Loading 学习记录"
+title: "s05 Skill Loading"
 published: 2025-03-09
 description: "梳理路径拼接、递归文件查找、正则解析 front matter 等核心知识点。"
 tags: [Skill加载, pathlib, front matter, 递归查找]
@@ -7,9 +7,9 @@ category: learn-cc-blogs
 lang: zh_CN
 ---
 
-# s05_skill_loading.py 学习记录
+# s05_skill_loading.py
 
-## 本次学习内容概览
+## 本次内容概览
 
 这次围绕 `agents/s05_skill_loading.py` 梳理了路径拼接、递归查找、正则解析 front matter、以及 Python 返回值 tuple 语法四个核心点，并完成了当前内容的一次提交。
 

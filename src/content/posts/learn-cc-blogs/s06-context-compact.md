@@ -1,5 +1,5 @@
 ---
-title: "s06 Context Compact 学习记录"
+title: "s06 Context Compact"
 published: 2025-03-11
 description: "解析 Agent 在长会话中的三层上下文压缩机制。"
 tags: [上下文压缩, token控制, 长会话, 分层压缩]
@@ -7,7 +7,7 @@ category: learn-cc-blogs
 lang: zh_CN
 ---
 
-# s06_context_compact 学习记录
+# s06_context_compact
 
 ## 一、整体目标
 

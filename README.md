@@ -1,4 +1,4 @@
-# starzn-学习笔记
+# starzn-博客
 
 基于 Astro + Fuwari 主题的个人技术博客，部署在 [starzn.xyz](https://starzn.xyz/)。
 
@@ -41,7 +41,7 @@ front-practice-samples/
     │   ├── config.ts              # Content Collection Zod schema
     │   ├── posts/                 # 博客文章
     │   │   ├── prompt-engineering/  # 提示词工程系列（5 篇）
-    │   │   └── learn-cc-blogs/      # Claude Code 学习记录（12 篇）
+    │   │   └── learn-cc-blogs/      # Claude Code（12 篇）
     │   └── spec/
     │       └── about.md           # 关于页面内容
     ├── pages/                     # 文件路由

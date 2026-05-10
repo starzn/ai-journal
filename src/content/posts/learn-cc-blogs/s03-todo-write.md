@@ -1,15 +1,15 @@
 ---
-title: "s03 Todo Write 学习记录"
+title: "s03 Todo Write"
 published: 2025-03-05
-description: "学习 Messages API 中 content block 的字段规范及 TodoManager 状态管理。"
+description: "解析 Messages API 中 content block 的字段规范及 TodoManager 状态管理。"
 tags: [TodoManager, content block, API规范, 状态管理]
 category: learn-cc-blogs
 lang: zh_CN
 ---
 
-# s03_todo_write.py 学习记录
+# s03_todo_write.py
 
-## 本次学习内容概览
+## 本次内容概览
 
 这次围绕 `agents/s03_todo_write.py` 做了结构化梳理，核心聚焦在两类能力：
 

@@ -24,7 +24,7 @@ src/
     config.ts          — Content Collection Zod schema
     posts/             — 博客文章 Markdown
       prompt-engineering/  — 提示词工程系列 (5 篇)
-      learn-cc-blogs/      — Claude Code 学习记录 (12 篇)
+      learn-cc-blogs/      — Claude Code  (12 篇)
     spec/
       about.md         — 关于页面
   i18n/languages/zh_CN.ts  — 中文 UI 翻译

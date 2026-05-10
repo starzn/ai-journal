@@ -1,13 +1,13 @@
 ---
-title: "s09 Agent Teams 学习记录"
+title: "s09 Agent Teams"
 published: 2025-03-17
-description: "学习多 Agent 团队协作中的消息传递与 JSONL 文件通信机制。"
+description: "多 Agent 团队协作中的消息传递与 JSONL 文件通信机制。"
 tags: [Agent团队, JSONL, 消息传递, 文件通信]
 category: learn-cc-blogs
 lang: zh_CN
 ---
 
-# s09 Agent Teams 学习记录
+# s09 Agent Teams
 
 ## 1. `msg.update(extra)` 的作用
 
