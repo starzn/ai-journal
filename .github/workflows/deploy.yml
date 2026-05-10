@@ -18,7 +18,7 @@ jobs:
           script: |
             source ~/.bashrc 2>/dev/null || source ~/.zshrc 2>/dev/null || true
             set -e
-            cd /home/starzn/front-practice-samples
+            cd /home/starzn/ai-journal
             git fetch origin main
             git reset --hard origin/main
             pnpm install
