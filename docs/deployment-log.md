@@ -1,5 +1,15 @@
 # 生产部署日志
 
+## 2026-08-22：GitHub Actions SSH 最小权限加固
+
+- 工作流提交：`fd3263e`
+- 幂等部署版本：`8e2a0192ef9f25a1e46e61676f234cfe65f0d34b`
+- GitHub Actions run：[`32553558287`](https://github.com/starzn/ai-journal/actions/runs/32553558287)
+- AI Journal 保留独立 Ed25519 Key；ECS 公钥增加 OpenSSH `restrict` 和强制命令，只接受 `deploy-ai-journal <40位SHA>`。
+- Actions 新增固定的 ECS Ed25519 Host Key，不在 Runner 中动态信任服务器。
+- 工作流先执行普通 `id` 命令并确认被拒绝，再调用受限部署命令。
+- 幂等镜像部署、容器健康和 `https://starzn.xyz/` 公网 TLS 检查全部通过，运行耗时 14 秒。
+
 ## 2026-08-22：首次不可变镜像部署
 
 - 站点：`https://starzn.xyz/`
