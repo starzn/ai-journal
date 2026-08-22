@@ -19,7 +19,7 @@
 | 图标 | astro-icon | FontAwesome 6 + Material Symbols |
 | 格式化/检查 | Biome | 统一代码风格 |
 | 包管理 | pnpm | |
-| 部署 | GitHub Actions → SSH → 阿里云 | 推送 main 分支自动构建 |
+| 部署 | Mac buildx → 阿里云 ACR → GitHub deploy tag → ECS | ECS 只拉取不可变 amd64 镜像 |
 
 ## 目录结构
 
@@ -155,13 +155,16 @@ Layout.astro（根布局）
 ### 部署流程
 
 ```
-git push origin main
-  → GitHub Actions 触发
-  → SSH 连接阿里云服务器
-  → git fetch + git reset --hard
-  → pnpm install + pnpm build
-  → Nginx 指向 dist/ 提供静态文件服务
+提交并推送代码
+  → deploy/build-and-push.sh 在 Mac 构建 linux/amd64 镜像
+  → 推送 Git SHA 镜像到阿里云 ACR
+  → 校验远程 manifest 后推送 deploy-ai-journal-<sha> 标签
+  → GitHub Actions 通过 SSH 调用服务器部署脚本
+  → ECS 从 ACR VPC 地址拉取镜像并执行健康检查
+  → 失败时恢复 PREVIOUS_IMAGE
 ```
+
+生产服务器不再执行 `pnpm install`、`pnpm build` 或 Docker build。详细变量和运行约束见 `deploy/`；发布前工作区必须干净，镜像标签必须与 Git commit SHA 一致。
 
 ## 常用命令
 

@@ -1,0 +1,12 @@
+.git
+.github
+.astro
+.next
+.vscode
+dist
+out
+node_modules
+*.tsbuildinfo
+*.log
+.DS_Store
+**/.DS_Store

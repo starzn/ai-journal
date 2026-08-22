@@ -1,14 +1,15 @@
-name: Deploy to server
+name: Deploy immutable image
 
 on:
   push:
-    branches: [ "main" ]
+    tags:
+      - "deploy-ai-journal-*"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy via SSH (build on server)
+      - name: Deploy existing ACR image via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -16,15 +17,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script_stop: true
           script: |
-            source ~/.bashrc 2>/dev/null || source ~/.zshrc 2>/dev/null || true
-            set -e
-            echo "🚀 Deploy started at $(date)"
-            cd /home/starzn/ai-journal
-            echo "📡 Git pulling..."
-            git fetch origin main
-            git reset --hard origin/main
-            echo "📦 Installing dependencies..."
-            pnpm install
-            echo "🔨 Building..."
-            pnpm build
-            echo "✅ Deploy finished at $(date)"
+            set -euo pipefail
+            tag='${{ github.ref_name }}'
+            sha="${tag#deploy-ai-journal-}"
+            test "$sha" = '${{ github.sha }}'
+            /srv/apps/ai-journal/server-deploy.sh "$sha"
