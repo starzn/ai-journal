@@ -52,7 +52,11 @@ if ! docker compose --env-file .image.env up -d --wait; then
 fi
 
 for attempt in {1..12}; do
-  if curl --fail --silent --show-error --max-time 10 https://starzn.xyz/ >/dev/null; then
+  # The host CA bundle may lag ISRG Root X2. Container health already checks
+  # the app; this verifies local TLS routing, while GitHub verifies public trust.
+  if curl --insecure --fail --silent --show-error \
+    --resolve starzn.xyz:443:127.0.0.1 \
+    --max-time 10 https://starzn.xyz/ >/dev/null; then
     printf '%s\n' "$image" >CURRENT_IMAGE
     echo "Deployed $image"
     exit 0

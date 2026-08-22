@@ -22,3 +22,15 @@ jobs:
             sha="${tag#deploy-ai-journal-}"
             test "$sha" = '${{ github.sha }}'
             /srv/apps/ai-journal/server-deploy.sh "$sha"
+
+      - name: Verify public TLS and blog response
+        run: |
+          curl \
+            --fail \
+            --silent \
+            --show-error \
+            --retry 6 \
+            --retry-all-errors \
+            --retry-delay 5 \
+            --max-time 15 \
+            https://starzn.xyz/ >/dev/null
