@@ -4,24 +4,65 @@ on:
   push:
     tags:
       - "deploy-ai-journal-*"
+  workflow_dispatch:
+    inputs:
+      release_sha:
+        description: Existing immutable ACR release SHA
+        required: true
+        type: string
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy existing ACR image via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script_stop: true
-          script: |
-            set -euo pipefail
-            tag='${{ github.ref_name }}'
-            sha="${tag#deploy-ai-journal-}"
-            test "$sha" = '${{ github.sha }}'
-            /srv/apps/ai-journal/server-deploy.sh "$sha"
+      - name: Configure pinned SSH identity
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: |
+          install -d -m 0700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 0600 ~/.ssh/id_ed25519 ~/.ssh/known_hosts
+
+      - name: Verify SSH key rejects shell access
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          if ssh \
+            -i ~/.ssh/id_ed25519 \
+            -o BatchMode=yes \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=yes \
+            "$SSH_USER@$SSH_HOST" id; then
+            echo "Restricted deploy key unexpectedly allowed shell access." >&2
+            exit 1
+          fi
+
+      - name: Deploy existing ACR image via restricted SSH key
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_RELEASE_SHA: ${{ inputs.release_sha }}
+          REF_NAME: ${{ github.ref_name }}
+          REF_SHA: ${{ github.sha }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          if [[ "$EVENT_NAME" = workflow_dispatch ]]; then
+            sha="$INPUT_RELEASE_SHA"
+          else
+            sha="${REF_NAME#deploy-ai-journal-}"
+            test "$sha" = "$REF_SHA"
+          fi
+          [[ "$sha" =~ ^[0-9a-f]{40}$ ]]
+          ssh \
+            -i ~/.ssh/id_ed25519 \
+            -o BatchMode=yes \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=yes \
+            "$SSH_USER@$SSH_HOST" \
+            "deploy-ai-journal $sha"
 
       - name: Verify public TLS and blog response
         run: |

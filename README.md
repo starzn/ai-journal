@@ -166,9 +166,11 @@ Layout.astro（根布局）
 
 生产服务器不再执行 `pnpm install`、`pnpm build` 或 Docker build。详细变量和运行约束见 `deploy/`；发布前工作区必须干净，镜像标签必须与 Git commit SHA 一致。
 
-GitHub Actions 仅由 `deploy-ai-journal-<40位commit SHA>` 标签触发。Actions
-不会构建镜像，而是通过 SSH 要求 ECS 从阿里云 ACR VPC 地址拉取已经由
-`deploy/build-and-push.sh` 构建并推送的不可变镜像。
+GitHub Actions 通常由 `deploy-ai-journal-<40位commit SHA>` 标签触发，也可
+手动选择已经存在于 ACR 的完整 release SHA 做幂等验证。Actions 不会构建
+镜像，而是通过固定服务器 Host Key 的专用 SSH Key 要求 ECS 拉取不可变镜像。
+该 Key 在服务器端使用 OpenSSH `restrict` 和强制命令，只接受
+`deploy-ai-journal <40位SHA>`；工作流会先验证普通 shell 命令确实被拒绝。
 
 生产运维命令：
 
