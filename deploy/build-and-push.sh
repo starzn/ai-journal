@@ -21,7 +21,8 @@ docker buildx build \
   --push \
   .
 
-docker buildx imagetools inspect "$image" | grep -q 'linux/amd64'
+manifest="$(docker buildx imagetools inspect "$image")"
+printf '%s\n' "$manifest" | grep 'Platform:[[:space:]]*linux/amd64' >/dev/null
 git tag "$deploy_tag" "$sha"
 git push origin "$deploy_tag"
 

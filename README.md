@@ -24,8 +24,8 @@
 ## 目录结构
 
 ```
-front-practice-samples/
-├── .github/workflows/deploy.yml   # CI/CD：推送 main → SSH 构建部署
+ai-journal/
+├── .github/workflows/deploy.yml   # CI/CD：deploy tag → SSH 拉取不可变镜像
 ├── astro.config.mjs               # Astro 主配置（集成、Markdown 管线、站点信息）
 ├── tailwind.config.cjs            # Tailwind 配置（darkMode: class）
 ├── postcss.config.mjs             # PostCSS（import + nesting + tailwind）
@@ -165,6 +165,21 @@ Layout.astro（根布局）
 ```
 
 生产服务器不再执行 `pnpm install`、`pnpm build` 或 Docker build。详细变量和运行约束见 `deploy/`；发布前工作区必须干净，镜像标签必须与 Git commit SHA 一致。
+
+GitHub Actions 仅由 `deploy-ai-journal-<40位commit SHA>` 标签触发。Actions
+不会构建镜像，而是通过 SSH 要求 ECS 从阿里云 ACR VPC 地址拉取已经由
+`deploy/build-and-push.sh` 构建并推送的不可变镜像。
+
+生产运维命令：
+
+```bash
+cd /srv/apps/ai-journal
+docker compose --env-file .image.env ps
+docker compose --env-file .image.env logs --tail=200 web
+cat CURRENT_IMAGE
+```
+
+首次生产部署及后续变更记录见 [`docs/deployment-log.md`](docs/deployment-log.md)。
 
 ## 常用命令
 
