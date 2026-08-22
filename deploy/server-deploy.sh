@@ -2,6 +2,7 @@
 set -euo pipefail
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
+source ./prune-project-images.sh
 
 sha="${1:-}"
 if [[ ! "$sha" =~ ^[0-9a-f]{40}$ ]]; then
@@ -58,6 +59,8 @@ for attempt in {1..12}; do
     --resolve starzn.xyz:443:127.0.0.1 \
     --max-time 10 https://starzn.xyz/ >/dev/null; then
     printf '%s\n' "$image" >CURRENT_IMAGE
+    prune_project_images "$sha" "${ACR_VPC_REGISTRY}/${ACR_NAMESPACE}/${ACR_REPOSITORY}" \
+      "${ACR_VPC_REGISTRY}/${ACR_NAMESPACE}/${ACR_REPOSITORY}"
     echo "Deployed $image"
     exit 0
   fi

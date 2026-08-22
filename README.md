@@ -162,6 +162,7 @@ Layout.astro（根布局）
   → GitHub Actions 通过 SSH 调用服务器部署脚本
   → ECS 从 ACR VPC 地址拉取镜像并执行健康检查
   → 失败时恢复 PREVIOUS_IMAGE
+  → 成功后保留当前版本和最近 2 个历史版本，删除更旧的本项目镜像
 ```
 
 生产服务器不再执行 `pnpm install`、`pnpm build` 或 Docker build。详细变量和运行约束见 `deploy/`；发布前工作区必须干净，镜像标签必须与 Git commit SHA 一致。
@@ -179,6 +180,7 @@ cd /srv/apps/ai-journal
 docker compose --env-file .image.env ps
 docker compose --env-file .image.env logs --tail=200 web
 cat CURRENT_IMAGE
+cat RELEASE_HISTORY
 ```
 
 首次生产部署及后续变更记录见 [`docs/deployment-log.md`](docs/deployment-log.md)。
