@@ -40,7 +40,21 @@ export const siteConfig: SiteConfig = {
 };
 
 export const navBarConfig: NavBarConfig = {
-	links: [LinkPreset.Home, LinkPreset.Archive, LinkPreset.About],
+	links: [
+		LinkPreset.Home,
+		LinkPreset.Archive,
+		LinkPreset.About,
+		{
+			name: "视频工具",
+			url: "https://media.starzn.xyz/",
+			external: true,
+		},
+		{
+			name: "政策学习",
+			url: "https://policy.starzn.xyz/",
+			external: true,
+		},
+	],
 };
 
 export const profileConfig: ProfileConfig = {
