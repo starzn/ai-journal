@@ -3,7 +3,7 @@ title: "s03 Todo Write"
 published: 2025-03-05
 description: "解析 Messages API 中 content block 的字段规范及 TodoManager 状态管理。"
 tags: [TodoManager, content block, API规范, 状态管理]
-category: learn-cc-blogs
+category: Agent 工程实践
 lang: zh_CN
 ---
 

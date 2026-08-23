@@ -3,7 +3,7 @@ title: "s08 Background Tasks"
 published: 2025-03-15
 description: "解析 BackgroundManager 后台任务管理机制，包括线程异步执行与互斥锁。"
 tags: [后台任务, threading, 互斥锁, 通知队列]
-category: learn-cc-blogs
+category: Agent 工程实践
 lang: zh_CN
 ---
 

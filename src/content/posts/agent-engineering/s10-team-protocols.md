@@ -3,7 +3,7 @@ title: "s10 Team Protocols"
 published: 2025-03-19
 description: "解析团队协议中的 shutdown 响应流程与双重确认机制。"
 tags: [团队协议, shutdown, 状态确认, 消息总线]
-category: learn-cc-blogs
+category: Agent 工程实践
 lang: zh_CN
 ---
 

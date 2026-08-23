@@ -3,7 +3,7 @@ title: "s04 Subagent"
 published: 2025-03-07
 description: "梳理子智能体循环机制、作用域隔离与工具参数 schema 定义。"
 tags: [SubAgent, 循环安全上限, 工具Schema, JSON日志]
-category: learn-cc-blogs
+category: Agent 工程实践
 lang: zh_CN
 ---
 

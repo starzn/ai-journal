@@ -3,7 +3,7 @@ title: "s02 Tool Use"
 published: 2025-03-03
 description: "围绕工具使用模块的逐行理解，重点包括路径保护与文件读取。"
 tags: [Tool Use, 路径安全, 文件读取, Python]
-category: learn-cc-blogs
+category: Agent 工程实践
 lang: zh_CN
 ---
 

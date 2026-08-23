@@ -3,7 +3,7 @@ title: "s01 Agent Loop"
 published: 2025-03-01
 description: "最小可运行的 AI Agent Loop 示例，解析核心循环流程。"
 tags: [Agent Loop, Anthropic API, tool_use, Python]
-category: learn-cc-blogs
+category: Agent 工程实践
 lang: zh_CN
 ---
 

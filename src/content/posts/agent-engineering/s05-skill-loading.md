@@ -3,7 +3,7 @@ title: "s05 Skill Loading"
 published: 2025-03-09
 description: "梳理路径拼接、递归文件查找、正则解析 front matter 等核心知识点。"
 tags: [Skill加载, pathlib, front matter, 递归查找]
-category: learn-cc-blogs
+category: Agent 工程实践
 lang: zh_CN
 ---
 

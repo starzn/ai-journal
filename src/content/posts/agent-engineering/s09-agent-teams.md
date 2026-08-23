@@ -3,7 +3,7 @@ title: "s09 Agent Teams"
 published: 2025-03-17
 description: "多 Agent 团队协作中的消息传递与 JSONL 文件通信机制。"
 tags: [Agent团队, JSONL, 消息传递, 文件通信]
-category: learn-cc-blogs
+category: Agent 工程实践
 lang: zh_CN
 ---
 

@@ -3,7 +3,7 @@ title: "s07 Task System"
 published: 2025-03-13
 description: "解析任务系统中从文件名提取任务 ID、JSON 序列化等核心实现。"
 tags: [任务系统, JSON, 文件解析, 任务ID]
-category: learn-cc-blogs
+category: Agent 工程实践
 lang: zh_CN
 ---
 
